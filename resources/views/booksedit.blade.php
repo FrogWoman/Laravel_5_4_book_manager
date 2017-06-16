@@ -2,9 +2,6 @@
 
 @section('content')
 
-<?php
-var_dump($book);
-?>
 <div class="row">
     <div class="col-md-12">
     @include('common.errors')
@@ -40,7 +37,7 @@ var_dump($book);
 
         <!-- Saveボタン/Backボタン -->
         <div class="well well-sm">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">SAVE</button>
             <a class="btn btn-link pull-right" href="{{ url('/') }}">
                 <i class="glyphicon glyphicon-backward"></i>  Back
             </a>
