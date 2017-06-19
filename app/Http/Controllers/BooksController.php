@@ -8,13 +8,12 @@ use Validator;
 
 class BooksController extends Controller
 {
-    //ダッシュボード
-    public function index(){
-        $books =Book::orderBy('created_at','asc')->get();
-
-        return view('books',[
-            'books'=>$books
-        ]);
+    public function index()
+    {
+         $books = Book::orderBy('created_at', 'asc')->paginate(3);
+         return view('books', [
+            'books' => $books
+         ]);
     }
 
     //登録
