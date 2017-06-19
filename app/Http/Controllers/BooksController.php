@@ -5,9 +5,11 @@ use Illuminate\Http\Request;
 
 use App\Book;
 use Validator;
+use Auth;
 
 class BooksController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -15,10 +17,13 @@ class BooksController extends Controller
 
     public function index()
     {
-         $books = Book::orderBy('created_at', 'asc')->paginate(3);
-         return view('books', [
-            'books' => $books
-         ]);
+        $books = Book::where('user_id',Auth::user()->id)
+                        ->orderBy('created_at', 'asc')
+                        ->paginate(3);
+
+        return view('books', [
+            'books' => $books,
+        ]);
     }
 
     //登録
@@ -41,6 +46,7 @@ class BooksController extends Controller
 
         //Eloquentモデル
         $books = new Book;
+        $books->user_id     = Auth::user()->id;
         $books->item_name   = $req->item_name;
         $books->item_number = $req->item_number;
         $books->item_amount = $req->item_amount;
@@ -50,11 +56,12 @@ class BooksController extends Controller
         return redirect('/');
     }
 
-    //更新確認画面
-    public function edit(Book $books)
+    public function edit($book_id)
     {
-        //{books}id 値を取得 => Book $books id 値の1レコード取得
-        return view('booksedit', ['book' => $books]);
+        $books = Book::where('user_id',Auth::user()->id)->find($book_id);
+        return view('booksedit', [
+            'book' => $books
+        ]);
     }
 
     //更新
@@ -76,6 +83,8 @@ class BooksController extends Controller
         }
         // Eloquentモデル
         $books = Book::find($req->id);
+        $books = Book::where('user_id',Auth::user()->id)
+                ->find($req->id);
         $books->item_name   = $req->item_name;
         $books->item_number = $req->item_number;
         $books->item_amount = $req->item_amount;

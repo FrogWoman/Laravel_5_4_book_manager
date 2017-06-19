@@ -1,6 +1,10 @@
 <?php
 use Illuminate\Http\Request;
 
+//認証
+Auth::routes();
+Route::get('/home', 'BooksController@index')->name('home');
+
 //本のダッシュボード表示
 Route::get('/','BooksController@index');
 
@@ -15,7 +19,3 @@ Route::post('/books/update','BooksController@update');
 
 //本を削除
 Route::delete('/book/{book}','BooksController@destroy');
-
-Auth::routes();
-
-Route::get('/home', 'BooksController@index')->name('home');
