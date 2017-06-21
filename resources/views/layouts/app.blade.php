@@ -60,6 +60,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{url('/')}}">本一覧(公開ページ)</a></li>
+                                    <li><a href="{{url('/home')}}">本一覧(非公開ページ)</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
