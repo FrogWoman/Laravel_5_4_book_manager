@@ -46,11 +46,12 @@ class BooksController extends Controller
 
         //Eloquentモデル
         $books = new Book;
-        $books->user_id     = Auth::user()->id;
-        $books->item_name   = $req->item_name;
-        $books->item_number = $req->item_number;
-        $books->item_amount = $req->item_amount;
-        $books->published   = $req->published;
+        $books->user_id            = Auth::user()->id;
+        $books->item_name          = $req->item_name;
+        $books->item_description   = $req->ce;
+        $books->item_number        = $req->item_number;
+        $books->item_amount        = $req->item_amount;
+        $books->published          = $req->published;
         $books->save();
 
         return redirect('/');
@@ -85,10 +86,11 @@ class BooksController extends Controller
         $books = Book::find($req->id);
         $books = Book::where('user_id',Auth::user()->id)
                 ->find($req->id);
-        $books->item_name   = $req->item_name;
-        $books->item_number = $req->item_number;
-        $books->item_amount = $req->item_amount;
-        $books->published   = $req->published;
+        $books->item_name          = $req->item_name;
+        $books->item_description   = $req->ce;
+        $books->item_number        = $req->item_number;
+        $books->item_amount        = $req->item_amount;
+        $books->published          = $req->published;
         $books->save();
         return redirect('/');
     }

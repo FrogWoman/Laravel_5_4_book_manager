@@ -19,8 +19,3 @@ Route::post('/books/update','BooksController@update');
 
 //本を削除
 Route::delete('/book/{book}','BooksController@destroy');
-
-//Laravel File Manager DEMO
-Route::get('/demo',function(){
-    return view('demo');
-});
