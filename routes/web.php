@@ -10,7 +10,7 @@ Route::get('/home', 'BooksController@index');
 Route::get('/','PublicbooksController@index');
 
 //公開ページ:description
-Route::get('/public_description/{books}','PublicbooksController@description');
+Route::post('/public_description/{books}','PublicbooksController@description');
 
 //本のダッシュボード表示
 //Route::get('/','BooksController@index');

@@ -15,18 +15,18 @@
         @if (count($books) > 0)
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    現在の本
+                    Published BOOKS
                 </div>
 
                 <div class="panel-body">
                     <table class="table table-striped task-table">
                         <!-- テーブルヘッダ -->
                         <thead>
-                            <th>公開日</th>
-                            <th>タイトル</th>
-                            <th>金額</th>
-                            <th>数</th>
-                            <th>詳細ページ</th>
+                            <th>Published</th>
+                            <th>Book</th>
+                            <th>Amount</th>
+                            <th>Number</th>
+                            <th>description</th>
                         </thead>
 
                         <!-- テーブル本体 -->
@@ -59,7 +59,7 @@
                                         <form action="{{ url('public_description/'.$book->id) }}" method="POST">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-default">
-                                                <i class="glyphicon glyphicon-trash"></i> 詳細
+                                                <i class="glyphicon glyphicon-list-alt"></i> Description
                                             </button>
                                         </form>
                                     </td>
