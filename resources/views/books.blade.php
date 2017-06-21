@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-sm-12">
-                <label for="item_name">紹介文</label>
+                <label for="item_name">Description</label>
                 <textarea name="ce" class="form-control"></textarea>
 
                 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

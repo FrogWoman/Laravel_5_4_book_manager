@@ -14,6 +14,36 @@
         </div>
         <!--/ item_name -->
 
+        <!-- demo.blade.phpから抜粋 -->
+        <div class="form-group">
+            <label for="item_name">Description</label>
+            <textarea name="ce" class="form-control">{{$book->item_description}}</textarea>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+            <script>
+             var route_prefix = "{{ url(config('lfm.prefix')) }}";
+            </script>
+
+            <!-- CKEditor init -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+            <script>
+                $('textarea[name=ce]').ckeditor({
+                    height: 100,
+                    filebrowserImageBrowseUrl: route_prefix + '?type=Images',
+                    filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
+                    filebrowserBrowseUrl: route_prefix + '?type=Files',
+                    filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
+                });
+            </script>
+            <script>
+                {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
+            </script>
+            <script>
+                $('#lfm').filemanager('image', {prefix: route_prefix});
+            </script>
+         </div>
+        <!-- demo.blade.phpから抜粋 -->
+
         <!-- item_number -->
         <div class="form-group">
            <label for="item_number">Number</label>
